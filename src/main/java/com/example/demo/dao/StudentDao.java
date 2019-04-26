@@ -24,4 +24,9 @@ public interface StudentDao {
     *通过学生姓名进行查询，用于实现用户登录与注册
     */
     StudentDomain findByStudentName(String stuname);
+
+    /*
+    * 实现用户注册存储功能
+    * */
+    void studentsave(StudentDomain studentDomain);
 }

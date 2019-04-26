@@ -2,9 +2,9 @@ package com.example.demo.dao.domain;
 
 public class StudentDomain {
     private String School;
-    private Long StuId;
+    private String StuId;
     private String StuName;
-    private Long Tel;
+    private String Tel;
     private String Profession;
     private String Password;
 
@@ -16,14 +16,6 @@ public class StudentDomain {
         School = school;
     }
 
-    public Long getStuId() {
-        return StuId;
-    }
-
-    public void setStuId(Long stuId) {
-        StuId = stuId;
-    }
-
     public String getStuName() {
         return StuName;
     }
@@ -32,11 +24,19 @@ public class StudentDomain {
         StuName = stuName;
     }
 
-    public Long getTel() {
+    public String getStuId() {
+        return StuId;
+    }
+
+    public void setStuId(String stuId) {
+        StuId = stuId;
+    }
+
+    public String getTel() {
         return Tel;
     }
 
-    public void setTel(Long tel) {
+    public void setTel(String tel) {
         Tel = tel;
     }
 

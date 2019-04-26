@@ -4,7 +4,20 @@
     <select id="showall" parameterType="com.example.demo.dao.StudentDao" resultType="com.example.demo.dao.domain.StudentDomain">
         select * from student
     </select>
+
     <select id="findByStudentName" parameterType="com.example.demo.dao.StudentDao" resultType="com.example.demo.dao.domain.StudentDomain">
         select StuName,Password from student where StuName=#{stuname}
     </select>
+
+    <insert id="studentsave" >
+        insert into student
+        (StuId,School,StuName,Tel,Profession,Password)
+        values (#{StuId},#{School},#{StuName},#{Tel},#{Profession},#{Password})
+    </insert>
+
+    <insert id="savemovie" >
+        insert  into movie
+        (movieId,moviename,protagonist,kind,showtime,urlload,grade,coverurl)
+        values (#{movieId},#{moviename},#{protagonist},#{kind},#{showtime},#{urlload},#{grade},#{coverurl})
+    </insert>
 </mapper>

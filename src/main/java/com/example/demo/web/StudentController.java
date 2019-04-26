@@ -19,24 +19,13 @@ public class StudentController {
    @GetMapping(value = "/test")
    @Test
    List<StudentDomain> test(){
-//       String name="zhanghao";
-//       String password="123456";
-//       login(name,password);
+       studentService.testsave();
        return studentService.showall();
    }
 
    @ResponseBody
-   @PostMapping(value = "/login")
+   @RequestMapping(value = "/login")
    String login(String stuname,String password){
-      StudentDomain student=new StudentDomain();
-      student=studentService.findByStudentName(stuname);
-
-      if(student.getStuName().equals(null)){
-         return "用户不存在，登录失败";
-      }
-      else if (!student.getPassword().equals(password)){
-         return "密码错误，登录失败";
-      }
-      return "登录成功";
+      return studentService.login(stuname,password);
    }
 }

@@ -10,6 +10,8 @@ public interface StudentService {
 
     StudentDomain findByStudentName(String name);
 
-    String login(LoginDomain loginDomain,String stuname,String password);
+    String login(String stuname,String password);
+
+    void studentsave(StudentDomain studentDomain);
 }
 
