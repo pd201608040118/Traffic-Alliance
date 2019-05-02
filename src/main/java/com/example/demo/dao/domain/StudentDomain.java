@@ -1,12 +1,12 @@
 package com.example.demo.dao.domain;
 
 public class StudentDomain {
-    private String School;
-    private String StuId;
-    private String StuName;
-    private String Tel;
-    private String Profession;
-    private String Password;
+    private String School;      //学校名称
+    private String StuId;       //用户id
+    private String StuName;    //用户名称
+    private String Tel;         //手机号
+    private String Profession; //职位
+    private String Password;   //密码
 
     public String getSchool() {
         return School;

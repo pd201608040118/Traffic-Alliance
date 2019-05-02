@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.AdminDao">
+
+    <insert id="insertStudent">
+        insert into student
+        (StuId,School,StuName,Tel,Profession,Password)
+        values (#{School},#{StuId},#{StuName},#{Tel},#{Profession},#{Password})
+    </insert>
+
+    <delete id="deletstudent">
+        delete from student where School=#{School},StuName=#{StuName}
+    </delete>
+
+    <select id="findstudent" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.AdminDomain">
+        select * from student where School=#{School}
+    </select>
+    
+    <select id="showallA" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.AdminDomain">
+        select School,StuName,Tel,Profession from student;
+    </select>
+
+    <update id="alterstudent" parameterType="com.example.demo.dao.AdminDao">
+        UPDATE student
+        SET StuId = #{StuId},StuName =#{StuName},Tel=#{Tel} ,Profession=#{Profession},Password=#{Password}
+        WHERE School = #{School}
+    </update>
+</mapper>
+
