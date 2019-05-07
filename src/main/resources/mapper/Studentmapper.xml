@@ -6,9 +6,9 @@
         select * from student
     </select>
 
-    <select id="findByStudentName" parameterType="com.example.demo.dao.StudentDao"
+    <select id="findByStudentId" parameterType="com.example.demo.dao.StudentDao"
             resultType="com.example.demo.dao.domain.StudentDomain">
-        select StuName,Password from student where StuName=#{stuname}
+        select StuId,Password from student where StuId=#{stuid}
     </select>
 
     <insert id="studentsave" >

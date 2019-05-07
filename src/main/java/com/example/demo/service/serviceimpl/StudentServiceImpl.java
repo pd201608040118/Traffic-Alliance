@@ -22,16 +22,16 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentDomain findByStudentName(String studentname) {
-        return studentDao.findByStudentName(studentname);
+    public StudentDomain findByStudentId(String studentid) {
+        return studentDao.findByStudentId(studentid);
     }
 
     @Override
-    public String login(String stuname, String password) {
+    public String login(String stuid, String password) {
         StudentDomain student = new StudentDomain();
-        student = studentService.findByStudentName(stuname);
+        student = studentService.findByStudentId(stuid);
 
-        if (student.getStuName().equals(null)) {
+        if (student.getStuId().equals(null)) {
             return "用户不存在，登录失败";
         } else if (!student.getPassword().equals(password)) {
             return "密码错误，登录失败";

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/trafficS")
+@RequestMapping(value = "/traffic/student")
 public class StudentController {
 
     @Autowired
@@ -22,8 +22,8 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/login")
-    String login(String stuname, String password) {
-        return studentService.login(stuname, password);
+    String login(String stuid, String password) {
+        return studentService.login(stuid, password);
     }
 
     @RequestMapping(value = "/deletename")

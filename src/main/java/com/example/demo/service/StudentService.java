@@ -9,10 +9,10 @@ public interface StudentService {
     List<StudentDomain> showall();
 
     //查询单个用户
-    StudentDomain findByStudentName(String name);
+    StudentDomain findByStudentId(String id);
 
     //登录
-    String login(String stuname,String password);
+    String login(String stuid,String password);
 
     void studentsave(StudentDomain studentDomain);
 
