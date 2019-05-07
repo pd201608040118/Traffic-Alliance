@@ -14,21 +14,18 @@ public class StudentController {
     @Autowired
     StudentServiceImpl studentService;
 
-    //填充数据库
-    @RequestMapping(value = "/test")
-    List<StudentDomain> test(int m, int n) {
-        studentService.testsave(m, n);
-        return studentService.showall();
-    }
-
     @RequestMapping(value = "/login")
     String login(String stuid, String password) {
         return studentService.login(stuid, password);
     }
 
-    @RequestMapping(value = "/deletename")
-    String deletename(String stuname, String school) {
-        studentService.deletename(stuname, school);
-        return "用户删除成功";
+    @RequestMapping(value = "/update")
+    void update(String school, String stuid, String stuname, String tel, String profession, String password){
+        studentService.studentupdate(school,stuid,stuname,tel,profession,password);
+    }
+
+    @RequestMapping(value = "/selectinfor")
+    void selectinfor(String inforname){
+        studentService.findInforByInforName(inforname);
     }
 }

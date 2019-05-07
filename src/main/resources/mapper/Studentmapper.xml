@@ -17,15 +17,16 @@
         values (#{StuId},#{School},#{StuName},#{Tel},#{Profession},#{Password})
     </insert>
 
-    <!-- <insert id="savemovie" >
-         insert  into movie
-         (movieId,moviename,protagonist,kind,showtime,urlload,grade,coverurl)
-         values (#{movieId},#{moviename},#{protagonist},#{kind},#{showtime},#{urlload},#{grade},#{coverurl})
-     </insert>-->
+    <update id="studentupdate" parameterType="com.example.demo.dao.StudentDao">
+        UPDATE student
+        SET StuId = #{StuId},School = #{School},StuName =#{StuName},Tel=#{Tel} ,
+            Profession=#{Profession},Password=#{Password}
+        WHERE StuId= #{StuId}
+    </update>
 
-    <delete id="deletename">
-        delete from student where StuName=#{stuname} and School=#{school}
-    </delete>
-
+    <select id="findInforByInforName" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.InforDomain">
+        select Title,Information,InforTime,Author from infor where Title=#{inforname}
+    </select>
 </mapper>
 

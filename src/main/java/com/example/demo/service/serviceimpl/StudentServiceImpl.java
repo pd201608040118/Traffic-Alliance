@@ -1,6 +1,7 @@
 package com.example.demo.service.serviceimpl;
 
 import com.example.demo.dao.StudentDao;
+import com.example.demo.dao.domain.InforDomain;
 import com.example.demo.dao.domain.StudentDomain;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,10 +45,25 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void deletename(String stuname, String school) { studentDao.deletename(stuname,school); }
+    public void studentupdate(String School, String StuId, String StuName, String Tel, String Profession, String Password) {
+        StudentDomain studentDomain1;
+        studentDomain1=studentService.findByStudentId(StuId);
+        studentDomain1.setSchool(School);
+        studentDomain1.setStuId(StuId);
+        studentDomain1.setProfession(Profession);
+        studentDomain1.setStuName(StuName);
+        studentDomain1.setPassword(Password);
+        studentDomain1.setTel(Tel);
+        studentDao.studentupdate(studentDomain1);
+    }
+
+    @Override
+    public InforDomain findInforByInforName(String name) {
+        return studentDao.findInforByInforName(name);
+    }
 
     //填充数据库
-    public void testsave(int m, int n) {
+/*    public void testsave(int m, int n) {
         for (int i = m; i < n; i++) {
             StudentDomain studentDomain = new StudentDomain();
             studentDomain.setStuId("" + i);
@@ -58,5 +74,5 @@ public class StudentServiceImpl implements StudentService {
             studentDomain.setTel("" + i);
             studentDao.studentsave(studentDomain);
         }
-    }
+    }*/
 }
