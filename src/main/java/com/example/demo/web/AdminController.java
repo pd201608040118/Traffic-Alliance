@@ -1,50 +1,43 @@
 package com.example.demo.web;
 
-import com.example.demo.dao.domain.AdminDomain;
+import com.example.demo.dao.domain.StudentDomain;
 import com.example.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/trafficA")
-public class AdminController extends StudentController{
+@RequestMapping(value = "/traffic/admin")
+public class AdminController extends StudentController {
 
     @Autowired
     AdminService adminService;
 
-    //增加用户
-    @RequestMapping(value = "/insertStudent")
-    String insertStudent(String School, String StuId, String StuName, String Tel, String Profession, String Password){
-        adminService.insertStudent(School,StuId,StuName,Tel,Profession,Password);
-        return "用户添加成功";
+    //删除学校目录下的某个用户
+    @RequestMapping(value = "/deletestudent")
+    String deletestudent(String stuname, String school) {
+        adminService.deletstudent(stuname, school);
+        return "删除成功";
     }
-
-    //删除用户
-    @RequestMapping(value = "/deletStudent")
-    String deletStudent(String School){
-        adminService.deletstudent(School);
-        return "成员删除成功";
-    }
-
-    //修改用户数据(根据学校名称查询并更改信息)
-    @RequestMapping(value = "alterstudent")
-    String  alterstudent(String School, String StuId, String StuName, String Tel, String Profession, String Password){
-        adminService.alterstudent(School,StuId,StuName,Tel,Profession,Password);
+    //修改个人信息
+    @RequestMapping(value = "/alteradmin")
+    String alteradmin(String schoolname, String tel, String adminname, String schoolid, String password) {
+        adminService.alteradmin(schoolname, tel, adminname, schoolid, password);
         return "修改成功";
     }
-
-    //查找单一用户
-    @RequestMapping(value = "/findStudent")
-    String findStudent(String School){
-        adminService.findstudent(School);
-        return "成员查找成功";
+    //查找学校下的所有用户
+    @RequestMapping(value = "/findstudent")
+    List<StudentDomain> findstudent(String school) {
+        return adminService.findstudent(school);
     }
-
-    //显示全部用户
-    @RequestMapping(value = "showall")
-    List<AdminDomain> showallA(){ return adminService.showallA(); }
+    //发布信息
+    @RequestMapping(value = "/uploadinfo")
+    String uploadinfo(String title, String conent, Date inforTime, String author) {
+        adminService.uploadinfo(title, conent, inforTime, author);
+        return "上传成功";
+    }
 
 }
