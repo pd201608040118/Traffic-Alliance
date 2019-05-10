@@ -25,9 +25,8 @@ public class AdminController extends StudentController {
 
     //修改个人信息
     @RequestMapping(value = "/alteradmin")
-    String alteradmin(String schoolname, String tel, String adminname, String schoolid, String password) {
-        adminService.alteradmin(schoolname, tel, adminname, schoolid, password);
-        return "修改成功";
+    String alteradmin(String tel, String adminname, String schoolid) {
+        return adminService.alteradmin(tel, adminname, schoolid);
     }
 
     //查找学校下的所有用户
@@ -55,4 +54,9 @@ public class AdminController extends StudentController {
         return adminService.login(schoolid, password);
     }
 
+    //更改上传的文本信息
+    @RequestMapping(value = "/updateInfor")
+    String updateInfor(String title, Date infortime, String conent) {
+        return adminService.updateinfor(title, infortime, conent);
+    }
 }

@@ -40,4 +40,10 @@ public interface AdminDao{
 
     //查找单个学生用户,通过姓名和学校查找
     StudentDomain findByAdminId2(@Param("stuname") String stuname, @Param("author") String school);
+
+    //修改学校发布信息
+    void updateInfor(InforDomain inforDomain);
+
+    //查找单个文件,通过学校名称查找
+    InforDomain findByInforAuthor(String title);
 }

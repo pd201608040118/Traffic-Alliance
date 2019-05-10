@@ -8,8 +8,8 @@
 
     <update id="alteradmin" parameterType="com.example.demo.dao.AdminDao">
         UPDATE school
-        SET SchoolName=#{SchoolName},Tel=#{Tel},adminname=#{adminname},Password=#{Password}
-        WHERE Schoolid=#{Schoolid}
+        SET Tel=#{Tel},adminname=#{adminname}
+        where Schoolid=#{Schoolid}
     </update>
 
     <select id="findstudent" parameterType="com.example.demo.dao.AdminDao"
@@ -37,6 +37,17 @@
             resultType="com.example.demo.dao.domain.StudentDomain">
         select StuName from student where StuName=#{stuname} and School=#{school}
     </select>
+
+    <select id="findByInforAuthor" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.InforDomain">
+        select Title from infor where Title=#{title}
+    </select>
+
+    <update id="updateInfor" parameterType="com.example.demo.dao.AdminDao">
+        UPDATE infor
+        SET InforTime=#{InforTime},Conent=#{Conent}
+        where Title=#{Title}
+    </update>
 
 </mapper>
 

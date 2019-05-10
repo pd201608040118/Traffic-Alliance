@@ -4,10 +4,10 @@ package com.example.demo.dao.domain;
 import java.util.Date;
 
 public class InforDomain {
-    private String Conent;           //内容
-    private Date InforTime;          //时间
-    private String Author;           //作者
     private String Title;            //标题
+    private Date InforTime;          //时间
+    private String Conent;           //内容
+    private String Author;           //作者
 
     public String getConent() {
         return Conent;

@@ -15,7 +15,7 @@ public interface AdminService {
     String deletstudent(String stuname, String school);
 
     //修改个人数据(根据学校查询并更改信息)
-    void alteradmin(String schoolsame, String tel, String adminname, String schoolid, String password);
+    String alteradmin(String adminname,String tel,String schoolid);
 
     //查找学校下的所有用户
     List<StudentDomain> findstudent(String school);
@@ -35,6 +35,7 @@ public interface AdminService {
     //查找单个用户通过姓名和学校进行删除
     StudentDomain findByAdminId2(String stuname, String school);
 
-
+   //修改学校发布信息
+   String updateinfor(String title,Date infortime,String conent);
 
 }
