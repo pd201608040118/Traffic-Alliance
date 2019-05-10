@@ -1,10 +1,9 @@
 package com.example.demo.dao;
 
+import com.example.demo.dao.domain.AdminDomain;
 import com.example.demo.dao.domain.InforDomain;
 import com.example.demo.dao.domain.StudentDomain;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,5 +29,5 @@ public interface StudentDao {
     void studentupdate(StudentDomain studentDomain);
 
     //    查找文本
-    InforDomain findInforByInforName(String name);
+    List<InforDomain> findInforByInforSchool(String school);
 }

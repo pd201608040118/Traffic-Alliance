@@ -15,14 +15,20 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
     @Autowired
     AdminDao adminDao;
+    @Autowired
+    AdminService adminService;
 
     //删除学校下的某一用户
     @Override
-    public void deletstudent(String stuname, String school) {
+    public String deletstudent(String stuname, String school) {
         StudentDomain studentDomain = new StudentDomain();
-        studentDomain.setStuName(stuname);
-        studentDomain.setSchool(school);
-        adminDao.deletstudent(studentDomain);
+        studentDomain = adminService.findByAdminId2(stuname,school);
+        if (studentDomain.getStuName().equals(null))
+            return "查无此人";
+        else{
+            adminDao.deletstudent(stuname,school);
+            return "删除成功";
+        }
     }
 
     //修改个人数据(根据学校查询并更改信息)
@@ -51,7 +57,34 @@ public class AdminServiceImpl implements AdminService {
         inforDomain.setInformation(information);
         inforDomain.setInforTime(inforTime);
         inforDomain.setAuthor(author);*/
-        adminDao.uploadinfo(title,conent,inforTime,author);
+        adminDao.uploadinfo(title, conent, inforTime, author);
+    }
+
+    @Override
+    public List<InforDomain> findInforByInforSchool(String school) {
+        return adminDao.findInforByInforSchool(school);
+    }
+
+    @Override
+    public String login(String schoolid, String password) {
+        AdminDomain adminDomain = new AdminDomain();
+        adminDomain = adminService.findByAdminId(schoolid);
+        if (adminDomain.getSchoolid().equals(null)) {
+            return "用户不存在，登录失败";
+        } else if (!adminDomain.getPassword().equals(password)) {
+            return "密码错误，登录失败";
+        }
+        return "登录成功";
+    }
+
+    @Override
+    public AdminDomain findByAdminId(String schoolid) {
+        return adminDao.findByAdminId(schoolid);
+    }
+
+    @Override
+    public StudentDomain findByAdminId2(String stuname, String school) {
+        return adminDao.findByAdminId2(stuname,school);
     }
 
 

@@ -7,19 +7,18 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
 
 @Mapper
 @Repository
-public interface AdminDao extends StudentDao {
+public interface AdminDao{
 /*
 对旗下用户的删改查,发布信息,查找信息,修改个人发布信息
  */
 
     //删除学校下的单个用户
-    void deletstudent(StudentDomain studentDomain);
+    void deletstudent(@Param("stuname") String stuname, @Param("school") String school);
 
     //修改个人信息
     void alteradmin(AdminDomain adminDomain);
@@ -29,8 +28,16 @@ public interface AdminDao extends StudentDao {
 
     //发布信息
     void uploadinfo(@Param("title") String title,
-                    @Param("conent")String conent,
-                    @Param("inforTime")Date inforTime,
-                    @Param("author")String author);
+                    @Param("conent") String conent,
+                    @Param("inforTime") Date inforTime,
+                    @Param("author") String author);
 
+    //查找学校所有发布的文件
+    List<InforDomain> findInforByInforSchool(String school);
+
+    //查找单个学生用户,通过id查找
+    AdminDomain findByAdminId(String schoolid);
+
+    //查找单个学生用户,通过姓名和学校查找
+    StudentDomain findByAdminId2(@Param("stuname") String stuname, @Param("school") String school);
 }

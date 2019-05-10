@@ -1,11 +1,12 @@
 package com.example.demo.web;
 
-import com.example.demo.dao.domain.StudentDomain;
+import com.example.demo.dao.domain.InforDomain;
 import com.example.demo.service.serviceimpl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping(value = "/traffic/student")
@@ -25,7 +26,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/selectinfor")
-    void selectinfor(String inforname){
-        studentService.findInforByInforName(inforname);
+    List<InforDomain> selectinfor(String school){
+        return studentService.findInforByInforSchool(school);
     }
 }

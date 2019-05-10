@@ -18,11 +18,26 @@
         select School,StuName,Tel,Profession from student WHERE School=#{school}
     </select>
 
-    <insert id="uploadinfo" >
+    <insert id="uploadinfo">
         insert into infor
         (Title,Conent,InforTime,Author)
         values (#{title},#{conent},#{inforTime},#{author})
     </insert>
+
+    <select id="findInforByInforSchool" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.InforDomain">
+        select Title,Conent,InforTime,Author,School from infor where School=#{school}
+    </select>
+
+    <select id="findByAdminId" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.AdminDomain">
+        select Schoolid,Password from school where Schoolid=#{schoolid}
+    </select>
+
+    <select id="findByAdminId2" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        select StuName from student where StuName=#{stuname} and School=#{school}
+    </select>
 
 </mapper>
 

@@ -11,7 +11,7 @@
         select StuId,Password from student where StuId=#{stuid}
     </select>
 
-    <insert id="studentsave" >
+    <insert id="studentsave">
         insert into student
         (StuId,School,StuName,Tel,Profession,Password)
         values (#{StuId},#{School},#{StuName},#{Tel},#{Profession},#{Password})
@@ -24,9 +24,9 @@
         WHERE StuId= #{StuId}
     </update>
 
-    <select id="findInforByInforName" parameterType="com.example.demo.dao.StudentDao"
+    <select id="findInforByInforSchool" parameterType="com.example.demo.dao.StudentDao"
             resultType="com.example.demo.dao.domain.InforDomain">
-        select Title,Information,InforTime,Author from infor where Title=#{inforname}
+        select Title,Conent,InforTime,Author,School from infor where School=#{school}
     </select>
 </mapper>
 

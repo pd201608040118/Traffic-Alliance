@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.dao.domain.InforDomain;
 import com.example.demo.dao.domain.StudentDomain;
 import com.example.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +20,39 @@ public class AdminController extends StudentController {
     //删除学校目录下的某个用户
     @RequestMapping(value = "/deletestudent")
     String deletestudent(String stuname, String school) {
-        adminService.deletstudent(stuname, school);
-        return "删除成功";
+        return adminService.deletstudent(stuname, school);
     }
+
     //修改个人信息
     @RequestMapping(value = "/alteradmin")
     String alteradmin(String schoolname, String tel, String adminname, String schoolid, String password) {
         adminService.alteradmin(schoolname, tel, adminname, schoolid, password);
         return "修改成功";
     }
+
     //查找学校下的所有用户
     @RequestMapping(value = "/findstudent")
     List<StudentDomain> findstudent(String school) {
         return adminService.findstudent(school);
     }
+
     //发布信息
     @RequestMapping(value = "/uploadinfo")
     String uploadinfo(String title, String conent, Date inforTime, String author) {
         adminService.uploadinfo(title, conent, inforTime, author);
         return "上传成功";
+    }
+
+    //查找学校所有发布的文件
+    @RequestMapping(value = "/findInforByInforSchool")
+    List<InforDomain> findInforByInforSchool(String school) {
+        return adminService.findInforByInforSchool(school);
+    }
+
+    //登录
+    @RequestMapping(value = "/login")
+    String login(String schoolid, String password) {
+        return adminService.login(schoolid, password);
     }
 
 }

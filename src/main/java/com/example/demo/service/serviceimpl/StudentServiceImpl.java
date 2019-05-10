@@ -58,8 +58,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public InforDomain findInforByInforName(String name) {
-        return studentDao.findInforByInforName(name);
+    public List<InforDomain> findInforByInforSchool(String school) {
+        return studentDao.findInforByInforSchool(school);
     }
 
     //填充数据库

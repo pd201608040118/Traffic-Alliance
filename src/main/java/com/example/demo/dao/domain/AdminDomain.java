@@ -1,6 +1,6 @@
 package com.example.demo.dao.domain;
 
-public class AdminDomain  {
+public class AdminDomain{
     private String SchoolName;     //学校名称
     private String Tel;         //负责人电话
     private String adminname;   //负责人
