@@ -24,10 +24,9 @@ public interface StudentDao {
     //    实现用户注册存储功能
     void studentsave(StudentDomain studentDomain);
 
-
     //    修改个人信息
     void studentupdate(StudentDomain studentDomain);
 
     //    查找文本
-    List<InforDomain> findInforByInforSchool(String school);
+    List<InforDomain> findInforByInforSchool(String author);
 }

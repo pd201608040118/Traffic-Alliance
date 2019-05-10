@@ -24,7 +24,7 @@ public interface AdminService {
     void uploadinfo(String title, String conent, Date inforTime, String author);
 
     //查找学校所有发布的文件
-    List<InforDomain> findInforByInforSchool(String school);
+    List<InforDomain> findInforByInforSchool(String author);
 
     //实现登录和返回登录信息
     String login(String stuid, String password);

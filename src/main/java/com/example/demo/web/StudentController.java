@@ -26,7 +26,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/selectinfor")
-    List<InforDomain> selectinfor(String school){
-        return studentService.findInforByInforSchool(school);
+    List<InforDomain> selectinfor(String author){
+        return studentService.findInforByInforSchool(author);
     }
 }

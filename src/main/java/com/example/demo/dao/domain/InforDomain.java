@@ -8,15 +8,6 @@ public class InforDomain {
     private Date InforTime;          //时间
     private String Author;           //作者
     private String Title;            //标题
-    private String School;           //学校
-
-    public String getSchool() {
-        return School;
-    }
-
-    public void setSchool(String school) {
-        School = school;
-    }
 
     public String getConent() {
         return Conent;

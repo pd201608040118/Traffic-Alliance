@@ -23,6 +23,6 @@ public interface StudentService {
     void studentupdate(String school, String stuid, String stuname, String tel, String profession, String password);
 
     //    查找文本
-    List<InforDomain> findInforByInforSchool(String school);
+    List<InforDomain> findInforByInforSchool(String author);
 }
 

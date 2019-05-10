@@ -45,8 +45,8 @@ public class AdminController extends StudentController {
 
     //查找学校所有发布的文件
     @RequestMapping(value = "/findInforByInforSchool")
-    List<InforDomain> findInforByInforSchool(String school) {
-        return adminService.findInforByInforSchool(school);
+    List<InforDomain> findInforByInforSchool(String author) {
+        return adminService.findInforByInforSchool(author);
     }
 
     //登录

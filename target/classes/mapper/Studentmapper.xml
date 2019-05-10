@@ -26,7 +26,7 @@
 
     <select id="findInforByInforSchool" parameterType="com.example.demo.dao.StudentDao"
             resultType="com.example.demo.dao.domain.InforDomain">
-        select Title,Conent,InforTime,Author,School from infor where School=#{school}
+        select Title,Conent,InforTime,Author from infor where Author=#{author}
     </select>
 </mapper>
 

@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.dao.AdminDao">
 
-
     <delete id="deletstudent">
         delete from student where StuName=#{stuname} and School=#{school}
     </delete>
@@ -26,7 +25,7 @@
 
     <select id="findInforByInforSchool" parameterType="com.example.demo.dao.AdminDao"
             resultType="com.example.demo.dao.domain.InforDomain">
-        select Title,Conent,InforTime,Author,School from infor where School=#{school}
+        select Title,Conent,InforTime,Author from infor where Author=#{author}
     </select>
 
     <select id="findByAdminId" parameterType="com.example.demo.dao.AdminDao"

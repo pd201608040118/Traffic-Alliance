@@ -61,8 +61,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<InforDomain> findInforByInforSchool(String school) {
-        return adminDao.findInforByInforSchool(school);
+    public List<InforDomain> findInforByInforSchool(String author) {
+        return adminDao.findInforByInforSchool(author);
     }
 
     @Override

@@ -33,11 +33,11 @@ public interface AdminDao{
                     @Param("author") String author);
 
     //查找学校所有发布的文件
-    List<InforDomain> findInforByInforSchool(String school);
+    List<InforDomain> findInforByInforSchool(String author);
 
     //查找单个学生用户,通过id查找
     AdminDomain findByAdminId(String schoolid);
 
     //查找单个学生用户,通过姓名和学校查找
-    StudentDomain findByAdminId2(@Param("stuname") String stuname, @Param("school") String school);
+    StudentDomain findByAdminId2(@Param("stuname") String stuname, @Param("author") String school);
 }
