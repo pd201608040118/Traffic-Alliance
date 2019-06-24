@@ -27,7 +27,7 @@ public interface AdminService {
     List<InforDomain> findInforByInforSchool(String author);
 
     //实现登录和返回登录信息
-    String login(String stuid, String password);
+    AdminDomain login(String stuid, String password);
 
     //查找单个用户利用id进行登录
     AdminDomain findByAdminId(String schoolid);

@@ -25,7 +25,6 @@ public class InforDomain {
         Title = title;
     }
 
-
     public Date getInforTime() {
         return InforTime;
     }

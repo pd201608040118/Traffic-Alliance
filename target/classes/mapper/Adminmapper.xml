@@ -48,5 +48,6 @@
         SET InforTime=#{InforTime},Conent=#{Conent}
         where Title=#{Title}
     </update>
+
 </mapper>
 

@@ -50,8 +50,8 @@ public class AdminController extends StudentController {
 
     //登录
     @RequestMapping(value = "/login")
-    String login(String schoolid, String password) {
-        return adminService.login(schoolid, password);
+    StudentDomain login(String schoolid, String password) {
+        return studentService.login(schoolid, password);
     }
 
     //更改上传的文本信息

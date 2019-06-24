@@ -28,16 +28,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public String login(String stuid, String password) {
+    public StudentDomain login(String stuid, String password) {
         StudentDomain student = new StudentDomain();
         student = studentService.findByStudentId(stuid);
-
-        if (student.getStuId().equals(null)) {
+/*        if (student.getStuId().equals(null)) {
             return "用户不存在，登录失败";
         } else if (!student.getPassword().equals(password)) {
             return "密码错误，登录失败";
-        }
-        return "登录成功";
+        }*/
+        return student;
     }
 
     @Override

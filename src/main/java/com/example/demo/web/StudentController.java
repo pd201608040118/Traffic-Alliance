@@ -1,6 +1,7 @@
 package com.example.demo.web;
 
 import com.example.demo.dao.domain.InforDomain;
+import com.example.demo.dao.domain.StudentDomain;
 import com.example.demo.service.serviceimpl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,8 @@ public class StudentController {
     StudentServiceImpl studentService;
 
     @RequestMapping(value = "/login")
-    String login(String stuid, String password) {
+    @ResponseBody
+    StudentDomain login(@RequestParam("stuid") String stuid, @RequestParam("password") String password) {
         return studentService.login(stuid, password);
     }
 

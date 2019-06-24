@@ -69,15 +69,15 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public String login(String schoolid, String password) {
+    public AdminDomain login(String schoolid, String password) {
         AdminDomain adminDomain = new AdminDomain();
         adminDomain = adminService.findByAdminId(schoolid);
-        if (adminDomain.getSchoolid().equals(null)) {
+/*        if (adminDomain.getSchoolid().equals(null)) {
             return "用户不存在，登录失败";
         } else if (!adminDomain.getPassword().equals(password)) {
             return "密码错误，登录失败";
-        }
-        return "登录成功";
+        }*/
+        return adminDomain;
     }
 
     @Override

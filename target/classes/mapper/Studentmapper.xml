@@ -8,7 +8,7 @@
 
     <select id="findByStudentId" parameterType="com.example.demo.dao.StudentDao"
             resultType="com.example.demo.dao.domain.StudentDomain">
-        select StuId,Password from student where StuId=#{stuid}
+        select StuId,School,StuName,Tel,Profession,Password from student where StuId=#{stuid}
     </select>
 
     <insert id="studentsave">
