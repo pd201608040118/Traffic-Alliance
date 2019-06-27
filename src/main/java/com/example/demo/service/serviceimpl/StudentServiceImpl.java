@@ -2,6 +2,7 @@ package com.example.demo.service.serviceimpl;
 
 import com.example.demo.dao.StudentDao;
 import com.example.demo.dao.domain.InforDomain;
+import com.example.demo.dao.domain.ReturnDomain;
 import com.example.demo.dao.domain.StudentDomain;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-    StudentDomain studentDomain = new StudentDomain();
+    ReturnDomain returnDomain = new ReturnDomain();
 
     @Autowired
     StudentDao studentDao;
@@ -31,22 +32,28 @@ public class StudentServiceImpl implements StudentService {
     public StudentDomain login(String stuid, String password) {
         StudentDomain student = new StudentDomain();
         student = studentService.findByStudentId(stuid);
-/*        if (student.getStuId().equals(null)) {
-            return "用户不存在，登录失败";
-        } else if (!student.getPassword().equals(password)) {
-            return "密码错误，登录失败";
-        }*/
         return student;
     }
 
+    //注册
     @Override
-    public void studentsave(StudentDomain studentDomain) {
+    public int studentsave(String school, String stuId, String stuName, String tel, String profession, String password) {
+        StudentDomain studentDomain1;
+        studentDomain1 = studentService.findByStudentId(stuId);
+        if (stuId != null & stuName != null & tel!=null & profession != null & password != null) {
+            if (studentDomain1 == null) {
+                studentDao.studentsave(school, stuId, stuName, tel, profession, password);
+                return returnDomain.getR1();
+            } else
+                return returnDomain.getR2();
+        } else
+            return returnDomain.getR0();
     }
 
     @Override
-    public void studentupdate(String School, String StuId, String StuName, String Tel, String Profession, String Password) {
+    public int studentupdate(String School, String StuId, String StuName, String Tel, String Profession, String Password) {
         StudentDomain studentDomain1;
-        studentDomain1=studentService.findByStudentId(StuId);
+        studentDomain1 = studentService.findByStudentId(StuId);
         studentDomain1.setSchool(School);
         studentDomain1.setStuId(StuId);
         studentDomain1.setProfession(Profession);
@@ -54,6 +61,7 @@ public class StudentServiceImpl implements StudentService {
         studentDomain1.setPassword(Password);
         studentDomain1.setTel(Tel);
         studentDao.studentupdate(studentDomain1);
+        return returnDomain.getR1();
     }
 
     @Override

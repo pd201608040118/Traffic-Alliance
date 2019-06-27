@@ -30,7 +30,7 @@
 
     <select id="findByAdminId" parameterType="com.example.demo.dao.AdminDao"
             resultType="com.example.demo.dao.domain.AdminDomain">
-        select Schoolid,Password from school where Schoolid=#{schoolid}
+        select Schoolid,Password,Schoolid,Tel,SchoolName,adminname from school where Schoolid=#{schoolid}
     </select>
 
     <select id="findByAdminId2" parameterType="com.example.demo.dao.AdminDao"

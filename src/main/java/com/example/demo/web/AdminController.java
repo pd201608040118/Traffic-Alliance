@@ -1,10 +1,13 @@
 package com.example.demo.web;
 
+import com.example.demo.dao.domain.AdminDomain;
 import com.example.demo.dao.domain.InforDomain;
 import com.example.demo.dao.domain.StudentDomain;
 import com.example.demo.service.AdminService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -12,10 +15,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/traffic/admin")
-public class AdminController extends StudentController {
+public class AdminController {
 
     @Autowired
     AdminService adminService;
+
+    //登录
+    @RequestMapping(value = "/login")
+    AdminDomain login(@RequestParam("schoolid") String schoolid,
+                      @RequestParam("password")  String password) {
+        return adminService.login(schoolid, password);
+    }
 
     //删除学校目录下的某个用户
     @RequestMapping(value = "/deletestudent")
@@ -48,11 +58,6 @@ public class AdminController extends StudentController {
         return adminService.findInforByInforSchool(author);
     }
 
-    //登录
-    @RequestMapping(value = "/login")
-    StudentDomain login(String schoolid, String password) {
-        return studentService.login(schoolid, password);
-    }
 
     //更改上传的文本信息
     @RequestMapping(value = "/updateInfor")

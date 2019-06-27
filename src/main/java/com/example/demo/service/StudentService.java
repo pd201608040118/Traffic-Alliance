@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.dao.domain.InforDomain;
 import com.example.demo.dao.domain.StudentDomain;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,10 +14,11 @@ public interface StudentService {
     //登录
     StudentDomain login(String stuid,String password);
 
-    void studentsave(StudentDomain studentDomain);
+    //注册
+    int studentsave(String School, String StuId, String StuName, String Tel, String Profession, String Password);
 
     //    修改个人信息
-    void studentupdate(String school, String stuid, String stuname, String tel, String profession, String password);
+    int studentupdate(String school, String stuid, String stuname, String tel, String profession, String password);
 
     //    查找文本
     List<InforDomain> findInforByInforSchool(String author);

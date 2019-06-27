@@ -3,6 +3,7 @@ package com.example.demo.service.serviceimpl;
 import com.example.demo.dao.AdminDao;
 import com.example.demo.dao.domain.AdminDomain;
 import com.example.demo.dao.domain.InforDomain;
+import com.example.demo.dao.domain.ReturnDomain;
 import com.example.demo.dao.domain.StudentDomain;
 import com.example.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Service
 public class AdminServiceImpl implements AdminService {
+    ReturnDomain returnDomain = new ReturnDomain();
     @Autowired
     AdminDao adminDao;
     @Autowired
@@ -68,15 +70,11 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.findInforByInforSchool(author);
     }
 
+    //注册
     @Override
     public AdminDomain login(String schoolid, String password) {
-        AdminDomain adminDomain = new AdminDomain();
+        AdminDomain adminDomain;
         adminDomain = adminService.findByAdminId(schoolid);
-/*        if (adminDomain.getSchoolid().equals(null)) {
-            return "用户不存在，登录失败";
-        } else if (!adminDomain.getPassword().equals(password)) {
-            return "密码错误，登录失败";
-        }*/
         return adminDomain;
     }
 
@@ -92,14 +90,14 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public String updateinfor(String title, Date infortime, String conent) {
-        if (title == null || infortime == null||conent==null)
+        if (title == null || infortime == null || conent == null)
             return "标题、时间、信息不能为空";
         else {
             InforDomain inforDomain = new InforDomain();
             inforDomain = adminDao.findByInforAuthor(title);
             if (inforDomain.getTitle().equals(null))
                 return "查无此项,请检查数据输入";
-            else{
+            else {
                 inforDomain.setInforTime(infortime);
                 inforDomain.setConent(conent);
                 adminDao.updateInfor(inforDomain);

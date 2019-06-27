@@ -13,8 +13,8 @@
 
     <insert id="studentsave">
         insert into student
-        (StuId,School,StuName,Tel,Profession,Password)
-        values (#{StuId},#{School},#{StuName},#{Tel},#{Profession},#{Password})
+        (School,StuId,StuName,Tel,Profession,Password)
+        values (#{school},#{stuId},#{stuName},#{tel},#{profession},#{password})
     </insert>
 
     <update id="studentupdate" parameterType="com.example.demo.dao.StudentDao">
