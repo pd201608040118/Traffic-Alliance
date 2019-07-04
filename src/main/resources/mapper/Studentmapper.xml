@@ -28,5 +28,10 @@
             resultType="com.example.demo.dao.domain.InforDomain">
         select Title,Conent,InforTime,Author from infor where Author=#{author}
     </select>
+
+    <select id="showuser" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        SELECT * from student WHERE StuId=#{stuId}
+    </select>
 </mapper>
 

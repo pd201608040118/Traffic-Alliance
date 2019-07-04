@@ -3,18 +3,18 @@
 <mapper namespace="com.example.demo.dao.AdminDao">
 
     <delete id="deletstudent">
-        delete from student where StuName=#{stuname} and School=#{school}
+        delete * from student where StuName=#{stuname} and School=#{school}
     </delete>
 
     <update id="alteradmin" parameterType="com.example.demo.dao.AdminDao">
         UPDATE school
-        SET Tel=#{Tel},adminname=#{adminname}
+        SET Tel=#{tel},adminname=#{adminname},Password=#{password}
         where Schoolid=#{Schoolid}
     </update>
 
     <select id="findstudent" parameterType="com.example.demo.dao.AdminDao"
-            resultType="com.example.demo.dao.domain.AdminDomain">
-        select School,StuName,Tel,Profession from student WHERE School=#{school}
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        select StuId,School,StuName,Tel,Profession,Password from student WHERE School=#{school}
     </select>
 
     <insert id="uploadinfo">
@@ -38,9 +38,9 @@
         select StuName from student where StuName=#{stuname} and School=#{school}
     </select>
 
-    <select id="findByInforAuthor" parameterType="com.example.demo.dao.AdminDao"
+    <select id="findByInforTitle" parameterType="com.example.demo.dao.AdminDao"
             resultType="com.example.demo.dao.domain.InforDomain">
-        select Title from infor where Title=#{title}
+        select * from infor where Title=#{title}
     </select>
 
     <update id="updateInfor" parameterType="com.example.demo.dao.AdminDao">
@@ -49,5 +49,18 @@
         where Title=#{Title}
     </update>
 
+    <select id="showadmin" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.AdminDomain">
+        SELECT * FROM school WHERE Schoolid=#{schoolid}
+    </select>
+
+    <delete id="deleteinfor">
+        DELETE FROM infor WHERE Title=#{title}
+    </delete>
+
+    <select id="onlyfind" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.StudentDomain">
+        SELECT StuId,School,StuName,Tel,Profession,Password from student WHERE StuName=#{stuname}
+    </select>
 </mapper>
 

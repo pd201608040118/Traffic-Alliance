@@ -22,29 +22,45 @@ public class AdminServiceImpl implements AdminService {
 
     //删除学校下的某一用户
     @Override
-    public String deletstudent(String stuname, String school) {
-        StudentDomain studentDomain = new StudentDomain();
-        studentDomain = adminService.findByAdminId2(stuname, school);
-        if (studentDomain.getStuName().equals(null))
-            return "查无此人";
-        else {
-            adminDao.deletstudent(stuname, school);
-            return "删除成功";
+    public int deletstudent(String stuname, String school) {
+        if (stuname==null||school==null)
+            return  returnDomain.getR0();
+        else{
+            StudentDomain studentDomain = new StudentDomain();
+            studentDomain = adminService.findByAdminId2(stuname, school);
+            if (studentDomain==null)
+                return returnDomain.getR2();
+            else {
+                adminDao.deletstudent(stuname, school);
+                return returnDomain.getR1();
+            }
         }
+
+    }
+
+    @Override
+    public AdminDomain showadmin(String Schoolid) {
+        return adminDao.showadmin(Schoolid);
     }
 
     //修改个人数据
     @Override
-    public String alteradmin(String adminname, String tel, String schoolid) {
-        if (adminname == null || tel == null)
-            return "姓名和密码不能为空";
+    public int alteradmin(String tel, String adminname, String schoolid, String password1, String password2) {
+        if (adminname == null || tel == null || schoolid == null ||
+                password1 == null || password2 == null || password1.equals(password2))
+            return returnDomain.getR0();
         else {
             AdminDomain adminDomain = new AdminDomain();
             adminDomain = adminDao.findByAdminId(schoolid);
-            adminDomain.setTel(tel);
-            adminDomain.setAdminname(adminname);
-            adminDao.alteradmin(adminDomain);
-            return "修改成功";
+            if (adminDomain == null)
+                return returnDomain.getR2();
+            else {
+                adminDomain.setTel(tel);
+                adminDomain.setAdminname(adminname);
+                adminDomain.setPassword(password2);
+                adminDao.alteradmin(adminDomain);
+                return returnDomain.getR1();
+            }
         }
     }
 
@@ -54,15 +70,29 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.findstudent(school);
     }
 
+    @Override
+    public int deleteinfor(String title) {
+        InforDomain inforDomain = adminDao.findByInforTitle(title);
+        if (inforDomain == null) {
+            return returnDomain.getR1();
+        } else {
+            adminDao.deleteinfor(title);
+            return returnDomain.getR1();
+        }
+    }
+
     //发布信息
     @Override
-    public void uploadinfo(String title, String conent, Date inforTime, String author) {
-/*        InforDomain inforDomain = new InforDomain();
-        inforDomain.setTitle(title);
-        inforDomain.setInformation(information);
-        inforDomain.setInforTime(inforTime);
-        inforDomain.setAuthor(author);*/
-        adminDao.uploadinfo(title, conent, inforTime, author);
+    public int uploadinfo(String title, String conent, Date inforTime, String author) {
+        if (title != null & conent != null & inforTime != null && author != null) {
+            InforDomain inforDomain = adminDao.findByInforTitle(title);
+            if (inforDomain == null) {              //未找到
+                adminDao.uploadinfo(title, conent, inforTime, author);
+                return returnDomain.getR1();
+            } else     //对象存在
+                return returnDomain.getR2();
+        } else   //输入格式问题
+            return returnDomain.getR0();
     }
 
     @Override
@@ -88,23 +118,26 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.findByAdminId2(stuname, school);
     }
 
+    //修改文件信息
     @Override
-    public String updateinfor(String title, Date infortime, String conent) {
-        if (title == null || infortime == null || conent == null)
-            return "标题、时间、信息不能为空";
+    public int updateinfor(String title, String conent, Date infortime) {
+        if (title == null || infortime == null || conent == null)    //对象为空
+            return returnDomain.getR0();
         else {
-            InforDomain inforDomain = new InforDomain();
-            inforDomain = adminDao.findByInforAuthor(title);
-            if (inforDomain.getTitle().equals(null))
-                return "查无此项,请检查数据输入";
-            else {
-                inforDomain.setInforTime(infortime);
+            InforDomain inforDomain = adminDao.findByInforTitle(title);
+            if (inforDomain == null)   //找不到对象
+                return returnDomain.getR2();
+            else {  //找到并更改
                 inforDomain.setConent(conent);
+                inforDomain.setInforTime(infortime);
                 adminDao.updateInfor(inforDomain);
-                return "修改成功";
+                return returnDomain.getR1();
             }
         }
     }
 
-
+    @Override
+    public List<StudentDomain> onlyfind(String stuname) {
+        return adminDao.onlyfind(stuname);
+    }
 }

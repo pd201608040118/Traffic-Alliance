@@ -12,16 +12,22 @@ public interface AdminService {
     对旗下用户的删改查,发布信息,查找信息,修改个人发布信息
      */
     //删除学校下的某一用户
-    String deletstudent(String stuname, String school);
+    int deletstudent(String stuname, String school);
+
+    //显示个人信息
+    AdminDomain showadmin(String Schoolid);
 
     //修改个人数据(根据学校查询并更改信息)
-    String alteradmin(String adminname,String tel,String schoolid);
+    int alteradmin(String tel,String adminname,String schoolid,String password1,String password2);
 
     //查找学校下的所有用户
     List<StudentDomain> findstudent(String school);
 
+    //删除已发布的文件
+    int deleteinfor(String title);
+
     //发布信息
-    void uploadinfo(String title, String conent, Date inforTime, String author);
+    int uploadinfo(String title, String conent, Date inforTime, String author);
 
     //查找学校所有发布的文件
     List<InforDomain> findInforByInforSchool(String author);
@@ -36,6 +42,9 @@ public interface AdminService {
     StudentDomain findByAdminId2(String stuname, String school);
 
    //修改学校发布信息
-   String updateinfor(String title,Date infortime,String conent);
+   int updateinfor(String title,String conent,Date infortime);
+
+   //查找单个学生用户
+    List<StudentDomain> onlyfind(String stuname);
 
 }

@@ -33,15 +33,24 @@ public class StudentController {
         return studentService.studentsave(school, stuId, stuName, tel, profession, password);
     }
 
+
+    //显示个人信息
+    @RequestMapping(value = "/showuser")
+    StudentDomain showuser(@RequestParam("stuId")String stuId){
+        return studentService.showuser(stuId);
+    }
+
     //更新个人信息
     @RequestMapping(value = "/update")
-    int update(String school, String stuid, String stuname, String tel, String profession, String password) {
+    int update(@RequestParam("school") String school, @RequestParam("stuid") String stuid,
+               @RequestParam("stuname")String stuname, @RequestParam("tel") String tel,
+               @RequestParam("profession")String profession,  @RequestParam("password")String password) {
         return studentService.studentupdate(school, stuid, stuname, tel, profession, password);
     }
 
     //查找文件
     @RequestMapping(value = "/selectinfor")
-    List<InforDomain> selectinfor(String author) {
+    List<InforDomain> selectinfor(@RequestParam("author") String author) {
         return studentService.findInforByInforSchool(author);
     }
 }

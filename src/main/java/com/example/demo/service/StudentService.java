@@ -8,6 +8,9 @@ import java.util.List;
 public interface StudentService {
     List<StudentDomain> showall();
 
+    //显示个人信息
+    StudentDomain showuser(String stuId);
+
     //查询单个用户
     StudentDomain findByStudentId(String id);
 

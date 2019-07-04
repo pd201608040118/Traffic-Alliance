@@ -24,6 +24,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public StudentDomain showuser(String stuId) {
+        return studentDao.showuser(stuId);
+    }
+
+    @Override
     public StudentDomain findByStudentId(String studentid) {
         return studentDao.findByStudentId(studentid);
     }
@@ -40,7 +45,7 @@ public class StudentServiceImpl implements StudentService {
     public int studentsave(String school, String stuId, String stuName, String tel, String profession, String password) {
         StudentDomain studentDomain1;
         studentDomain1 = studentService.findByStudentId(stuId);
-        if (stuId != null & stuName != null & tel!=null & profession != null & password != null) {
+        if (stuId != null & stuName != null & tel != null & profession != null & password != null) {
             if (studentDomain1 == null) {
                 studentDao.studentsave(school, stuId, stuName, tel, profession, password);
                 return returnDomain.getR1();
@@ -52,16 +57,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int studentupdate(String School, String StuId, String StuName, String Tel, String Profession, String Password) {
-        StudentDomain studentDomain1;
-        studentDomain1 = studentService.findByStudentId(StuId);
-        studentDomain1.setSchool(School);
-        studentDomain1.setStuId(StuId);
-        studentDomain1.setProfession(Profession);
-        studentDomain1.setStuName(StuName);
-        studentDomain1.setPassword(Password);
-        studentDomain1.setTel(Tel);
-        studentDao.studentupdate(studentDomain1);
-        return returnDomain.getR1();
+        if (School == null || StuId == null || StuName == null ||
+                Tel == null || Profession == null)
+            return returnDomain.getR0();
+        else {
+            StudentDomain studentDomain1;
+            studentDomain1 = studentService.findByStudentId(StuId);
+            if (studentDomain1 == null)
+                return returnDomain.getR2();
+            else {
+                studentDomain1.setSchool(School);
+                studentDomain1.setStuId(StuId);
+                studentDomain1.setProfession(Profession);
+                studentDomain1.setStuName(StuName);
+                studentDomain1.setPassword(Password);
+                studentDomain1.setTel(Tel);
+                studentDao.studentupdate(studentDomain1);
+                return returnDomain.getR1();
+            }
+        }
     }
 
     @Override
