@@ -3,7 +3,7 @@
 <mapper namespace="com.example.demo.dao.AdminDao">
 
     <delete id="deletstudent">
-        delete * from student where StuName=#{stuname} and School=#{school}
+        DELETE from student WHERE StuName=#{stuname} AND School=#{school}
     </delete>
 
     <update id="alteradmin" parameterType="com.example.demo.dao.AdminDao">
@@ -35,7 +35,7 @@
 
     <select id="findByAdminId2" parameterType="com.example.demo.dao.AdminDao"
             resultType="com.example.demo.dao.domain.StudentDomain">
-        select StuName from student where StuName=#{stuname} and School=#{school}
+        select * from student where StuName=#{stuname} and School=#{school}
     </select>
 
     <select id="findByInforTitle" parameterType="com.example.demo.dao.AdminDao"

@@ -18,7 +18,7 @@ public interface AdminDao{
  */
 
     //删除学校下的单个用户
-    void deletstudent(@Param("stuname") String stuname, @Param("school") String school);
+    void deletstudent(@Param("stuName") String stuName, @Param("School") String School);
 
     //删除单个文件
     void deleteinfor(@Param("title")String title);
@@ -45,7 +45,7 @@ public interface AdminDao{
     AdminDomain findByAdminId(String schoolid);
 
     //查找单个学生用户,通过姓名和学校查找
-    StudentDomain findByAdminId2(@Param("stuname") String stuname, @Param("author") String school);
+    StudentDomain findByAdminId2(@Param("stuname") String stuname, @Param("school") String school);
 
     //修改学校发布信息
     void updateInfor(InforDomain inforDomain);

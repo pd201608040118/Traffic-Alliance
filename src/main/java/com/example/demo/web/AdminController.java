@@ -69,8 +69,8 @@ public class AdminController {
 
     //删除学校目录下的某个用户
     @RequestMapping(value = "/deletestudent")
-    int deletestudent(@RequestParam("stuName") String stuname, @RequestParam("school") String school) {
-        return adminService.deletstudent(stuname, school);
+    int deletestudent(@RequestParam("stuName") String stuName, @RequestParam("School") String School) {
+        return adminService.deletstudent(stuName, School);
     }
 
 
@@ -85,6 +85,5 @@ public class AdminController {
     List<StudentDomain> onlyfind(@RequestParam("stuname")String stuname){
         return adminService.onlyfind(stuname);
     }
-
 
 }

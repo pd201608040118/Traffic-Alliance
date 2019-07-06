@@ -22,16 +22,16 @@ public class AdminServiceImpl implements AdminService {
 
     //删除学校下的某一用户
     @Override
-    public int deletstudent(String stuname, String school) {
-        if (stuname==null||school==null)
+    public int deletstudent(String stuName, String School) {
+        if (stuName==null||School==null)
             return  returnDomain.getR0();
         else{
             StudentDomain studentDomain = new StudentDomain();
-            studentDomain = adminService.findByAdminId2(stuname, school);
+            studentDomain = adminService.findByAdminId2(stuName, School);
             if (studentDomain==null)
                 return returnDomain.getR2();
             else {
-                adminDao.deletstudent(stuname, school);
+                adminDao.deletstudent(stuName, School);
                 return returnDomain.getR1();
             }
         }

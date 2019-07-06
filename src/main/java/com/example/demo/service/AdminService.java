@@ -12,7 +12,7 @@ public interface AdminService {
     对旗下用户的删改查,发布信息,查找信息,修改个人发布信息
      */
     //删除学校下的某一用户
-    int deletstudent(String stuname, String school);
+    int deletstudent(String stuName, String School);
 
     //显示个人信息
     AdminDomain showadmin(String Schoolid);
