@@ -100,11 +100,11 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.findInforByInforSchool(author);
     }
 
-    //注册
+    //登录
     @Override
-    public AdminDomain login(String schoolid, String password) {
+    public AdminDomain login(String stuId, String password) {
         AdminDomain adminDomain;
-        adminDomain = adminService.findByAdminId(schoolid);
+        adminDomain = adminService.findByAdminId(stuId);
         return adminDomain;
     }
 

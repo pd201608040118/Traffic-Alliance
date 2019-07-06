@@ -20,8 +20,8 @@ public class StudentController {
     //登录
     @RequestMapping(value = "/login")
     @ResponseBody
-    StudentDomain login(@RequestParam("stuid") String stuid, @RequestParam("password") String password) {
-        return studentService.login(stuid, password);
+    StudentDomain login(@RequestParam("stuId") String stuId, @RequestParam("password") String password) {
+        return studentService.login(stuId, password);
     }
 
     //注册

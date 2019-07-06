@@ -22,9 +22,9 @@ public class AdminController {
 
     //登录
     @RequestMapping(value = "/login")
-    AdminDomain login(@RequestParam("schoolid") String schoolid,
+    AdminDomain login(@RequestParam("stuId") String stuId,
                       @RequestParam("password") String password) {
-        return adminService.login(schoolid, password);
+        return adminService.login(stuId, password);
     }
 
     //查看个人信息
