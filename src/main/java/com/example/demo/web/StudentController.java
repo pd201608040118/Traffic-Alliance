@@ -27,10 +27,10 @@ public class StudentController {
     //注册
     @RequestMapping(value = "/regedit")
     @ResponseBody
-    int regedit(@RequestParam("school") String school, @RequestParam("stuId") String stuId,
-                @RequestParam("stuName") String stuName, @RequestParam("tel") String tel,
-                @RequestParam("profession") String profession, @RequestParam("password") String password) {
-        return studentService.studentsave(school, stuId, stuName, tel, profession, password);
+    int regedit(@RequestParam("school1") String school1, @RequestParam("stuId1") String stuId1,
+                @RequestParam("stuName1") String stuName1, @RequestParam("tel1") String tel1,
+                @RequestParam("profession1") String profession1, @RequestParam("password1") String password1) {
+        return studentService.studentsave(school1, stuId1, stuName1, tel1, profession1, password1);
     }
 
 

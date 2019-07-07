@@ -38,6 +38,7 @@ public interface AdminDao{
     //显示个人信息
     AdminDomain showadmin(@Param("schoolid")String schoolid);
 
+
     //查找学校所有发布的文件
     List<InforDomain> findInforByInforSchool(String author);
 
