@@ -36,16 +36,16 @@ public class StudentController {
 
     //显示个人信息
     @RequestMapping(value = "/showuser")
-    StudentDomain showuser(@RequestParam("stuId")String stuId){
-        return studentService.showuser(stuId);
+    List<StudentDomain> showuser(@RequestParam("obj") String obj) {
+        return studentService.showuser(obj);
     }
 
     //更新个人信息
     @RequestMapping(value = "/update")
-    int update(@RequestParam("school") String school, @RequestParam("stuid") String stuid,
-               @RequestParam("stuname")String stuname, @RequestParam("tel") String tel,
-               @RequestParam("profession")String profession,  @RequestParam("password")String password) {
-        return studentService.studentupdate(school, stuid, stuname, tel, profession, password);
+    int update(@RequestParam("school1") String school1, @RequestParam("StuId1") String StuId1,
+               @RequestParam("stuname1") String stuname1, @RequestParam("tel1") String tel1,
+               @RequestParam("profession1") String profession1, @RequestParam("password2") String password2) {
+        return studentService.studentupdate(school1, StuId1, stuname1, tel1, profession1, password2);
     }
 
     //查找文件

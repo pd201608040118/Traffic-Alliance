@@ -31,7 +31,7 @@
 
     <select id="showuser" parameterType="com.example.demo.dao.StudentDao"
             resultType="com.example.demo.dao.domain.StudentDomain">
-        SELECT * from student WHERE StuId=#{stuId}
+        SELECT School,StuId,StuName,Tel,Profession,Password from student WHERE StuId=#{stuId}
     </select>
 </mapper>
 

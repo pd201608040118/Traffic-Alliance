@@ -15,7 +15,7 @@ public interface AdminService {
     int deletstudent(String stuName, String School);
 
     //显示个人信息
-    AdminDomain showadmin(String Schoolid);
+    List<AdminDomain> showadmin(String Schoolid);
 
     //修改个人数据(根据学校查询并更改信息)
     int alteradmin(String tel,String adminname,String schoolid,String password1,String password2);

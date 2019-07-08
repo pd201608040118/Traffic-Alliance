@@ -51,7 +51,7 @@
 
     <select id="showadmin" parameterType="com.example.demo.dao.AdminDao"
             resultType="com.example.demo.dao.domain.AdminDomain">
-        SELECT * FROM school WHERE Schoolid=#{schoolid}
+        SELECT Schoolid,Tel,SchoolName,adminname from school WHERE Schoolid=#{schoolid}
     </select>
 
     <delete id="deleteinfor">

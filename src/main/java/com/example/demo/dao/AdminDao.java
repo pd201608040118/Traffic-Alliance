@@ -36,7 +36,7 @@ public interface AdminDao{
                     @Param("author") String author);
 
     //显示个人信息
-    AdminDomain showadmin(@Param("schoolid")String schoolid);
+    List<AdminDomain> showadmin(@Param("schoolid")String schoolid);
 
 
     //查找学校所有发布的文件

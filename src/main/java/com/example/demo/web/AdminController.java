@@ -29,8 +29,8 @@ public class AdminController {
 
     //查看个人信息
     @RequestMapping(value = "/showadmin")
-    AdminDomain showadmin(@RequestParam("schoolid") String schoolid) {
-        return adminService.showadmin(schoolid);
+    List<AdminDomain> showadmin(@RequestParam("obj") String obj) {
+        return adminService.showadmin(obj);
     }
 
     //发布信息

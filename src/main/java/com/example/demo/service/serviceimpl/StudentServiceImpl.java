@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentDomain showuser(String stuId) {
+    public List<StudentDomain> showuser(String stuId) {
         return studentDao.showuser(stuId);
     }
 
@@ -63,18 +63,13 @@ public class StudentServiceImpl implements StudentService {
         else {
             StudentDomain studentDomain1;
             studentDomain1 = studentService.findByStudentId(StuId);
-            if (studentDomain1 == null)
-                return returnDomain.getR2();
-            else {
-                studentDomain1.setSchool(School);
-                studentDomain1.setStuId(StuId);
-                studentDomain1.setProfession(Profession);
-                studentDomain1.setStuName(StuName);
-                studentDomain1.setPassword(Password);
-                studentDomain1.setTel(Tel);
-                studentDao.studentupdate(studentDomain1);
-                return returnDomain.getR1();
-            }
+            studentDomain1.setSchool(School);
+            studentDomain1.setProfession(Profession);
+            studentDomain1.setStuName(StuName);
+            studentDomain1.setPassword(Password);
+            studentDomain1.setTel(Tel);
+            studentDao.studentupdate(studentDomain1);
+            return returnDomain.getR1();
         }
     }
 

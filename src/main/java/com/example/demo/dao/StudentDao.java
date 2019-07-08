@@ -24,7 +24,7 @@ public interface StudentDao {
                      @Param("profession") String profession, @Param("password") String password);
 
     //显示个人信息
-    StudentDomain showuser(@Param("stuId")String stuId);;
+    List<StudentDomain> showuser(@Param("stuId")String stuId);;
 
     //    修改个人信息
     void studentupdate(StudentDomain studentDomain);

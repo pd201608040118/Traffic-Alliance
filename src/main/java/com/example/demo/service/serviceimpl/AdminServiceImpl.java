@@ -39,7 +39,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public AdminDomain showadmin(String Schoolid) {
+    public List<AdminDomain> showadmin(String Schoolid) {
         return adminDao.showadmin(Schoolid);
     }
 
