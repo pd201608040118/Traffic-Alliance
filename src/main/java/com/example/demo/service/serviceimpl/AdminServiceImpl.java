@@ -143,12 +143,7 @@ public class AdminServiceImpl implements AdminService {
         if (messagename == null || sendtime == null || sendname == null || messagecontent == null)
             return returnDomain.getR0();
         else {
-            MessageDomain messageDomain = new MessageDomain();
-            messageDomain.setMessagename(messagecontent);
-            messageDomain.setMessagename(messagename);
-            messageDomain.setSendname(sendname);
-            messageDomain.setSendtime(sendtime);
-            adminDao.sendmessage(messageDomain);
+            adminDao.sendmessage(messagename,sendtime,sendname,messagecontent);
             return returnDomain.getR1();
         }
     }

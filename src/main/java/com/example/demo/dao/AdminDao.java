@@ -56,7 +56,8 @@ public interface AdminDao {
     List<StudentDomain> onlyfind(@Param("stuname") String stuname);
 
     //发私信
-    void sendmessage(MessageDomain messageDomain);
+    void sendmessage(@Param("messagename")String messagename, @Param("sendtime")Date sendtime,
+                     @Param("sendname")String sendname, @Param("messagecontent")String messagecontent);
 
     //创建活动
     void uploadactivity(@Param("activitytype") String activitytype, @Param("activitytime") Date activitytime,
