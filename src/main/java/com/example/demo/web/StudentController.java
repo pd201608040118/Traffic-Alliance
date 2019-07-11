@@ -1,8 +1,6 @@
 package com.example.demo.web;
 
-import com.example.demo.dao.domain.InforDomain;
-import com.example.demo.dao.domain.ReturnDomain;
-import com.example.demo.dao.domain.StudentDomain;
+import com.example.demo.dao.domain.*;
 import com.example.demo.service.serviceimpl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -52,5 +50,41 @@ public class StudentController {
     @RequestMapping(value = "/selectinfor")
     List<InforDomain> selectinfor(@RequestParam("author") String author) {
         return studentService.findInforByInforSchool(author);
+    }
+
+    //显示所有文件
+    @RequestMapping(value = "/showinfor")
+    List<InforDomain> showinfor() {
+        return studentService.showinfor();
+    }
+
+    //消息接收
+    @RequestMapping(value = "smessage")
+    List<MessageDomain> smessage(@RequestParam("obj") String stuId) {
+        return studentService.smessage(stuId);
+    }
+
+    //消息已读
+    @RequestMapping(value = "trueexist")
+    int trueexist() {
+        return studentService.trueexist();
+    }
+
+    //显示所有活动信息
+    @RequestMapping(value = "showactivity")
+    List<ActivityDomain> showactivity(){
+        return studentService.showactivity();
+    }
+
+    //报名
+    @RequestMapping(value = "takepart")
+    int takepart(@RequestParam("meetname")String meetname,@RequestParam("obj")String obj){
+        return studentService.takepart(meetname,obj);
+    }
+
+    //显示已报名信息
+    @RequestMapping(value ="takedpart")
+    List<ActivityDomain> takedpart(@RequestParam("obj")String obj){
+        return studentService.takedpart(obj);
     }
 }

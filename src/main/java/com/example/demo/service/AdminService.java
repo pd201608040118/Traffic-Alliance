@@ -18,7 +18,7 @@ public interface AdminService {
     List<AdminDomain> showadmin(String Schoolid);
 
     //修改个人数据(根据学校查询并更改信息)
-    int alteradmin(String tel,String adminname,String schoolid,String password1,String password2);
+    int alteradmin(String tel, String adminname, String schoolid, String password1, String password2);
 
     //查找学校下的所有用户
     List<StudentDomain> findstudent(String school);
@@ -41,10 +41,20 @@ public interface AdminService {
     //查找单个用户通过姓名和学校进行删除
     StudentDomain findByAdminId2(String stuname, String school);
 
-   //修改学校发布信息
-   int updateinfor(String title,String conent,Date infortime);
+    //修改学校发布信息
+    int updateinfor(String title, String conent, Date infortime);
 
-   //查找单个学生用户
+    //查找单个学生用户
     List<StudentDomain> onlyfind(String stuname);
 
+    //发送消息
+    int sendmessage(String messagename, Date sendtime,String sendname, String messagecontent);
+
+    //创建活动
+    int uploadactivity(String activitytype,Date activitytime,String acticityspace,
+                       int meetnumber,String meetname,String connent);
+
+    //更新活动
+    int updateactivity(String activitytype,Date activitytime,String acticityspace,
+                       int meetnumber,String meetname,String connent,String peoplename);
 }

@@ -33,5 +33,42 @@
             resultType="com.example.demo.dao.domain.StudentDomain">
         SELECT School,StuId,StuName,Tel,Profession,Password from student WHERE StuId=#{stuId}
     </select>
-</mapper>
 
+    <select id="showinfor" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.InforDomain">
+        SELECT * FROM infor
+    </select>
+
+    <select id="smessage" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.MessageDomain">
+        SELECT MessageName,SendTime,SendName,Messagecontent FROM message WHERE MessageName=#{message}
+    </select>
+
+    <update id="trueexist" parameterType="com.example.demo.dao.StudentDao">
+        UPDATE message
+        SET Ifexist=#{ifexist}
+    </update>
+
+    <select id="showactivity" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.ActivityDomain">
+        SELECT * FROM activity
+    </select>
+
+    <select id="showactivityname" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.ActivityDomain">
+        SELECT id,activitytype,activitytime,acticityspace,meetnumber,meetname,connent,peoplename FROM activity
+    </select>
+
+    <select id="findactivity" parameterType="com.example.demo.dao.StudentDao"
+            resultType="com.example.demo.dao.domain.ActivityDomain">
+        SELECT * FROM activity WHERE meetname=#{meetname}
+    </select>
+
+   <update id="takepart" parameterType="com.example.demo.dao.StudentDao">
+       UPDATE activity
+       SET peoplename=#{peoplename}
+       where meetname=#{meetname}
+   </update>
+
+
+</mapper>

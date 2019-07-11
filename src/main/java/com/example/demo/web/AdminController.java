@@ -82,8 +82,32 @@ public class AdminController {
 
     //查找单个学生用户
     @RequestMapping(value = "/onlyfind")
-    List<StudentDomain> onlyfind(@RequestParam("stuname")String stuname){
+    List<StudentDomain> onlyfind(@RequestParam("stuname") String stuname) {
         return adminService.onlyfind(stuname);
+    }
+
+    //发送消息
+    @RequestMapping(value = "sendmessage")
+    int sendmessage(@RequestParam("messagename") String messagename, @RequestParam("sendtime") Date sendtime,
+                    @RequestParam("sendname") String sendname, @RequestParam("messagecontent") String messagecontent) {
+        return adminService.sendmessage(messagename, sendtime, sendname, messagecontent);
+    }
+
+    //创建活动
+    @RequestMapping(value = "uploadactivity")
+    int uploadactivity(@RequestParam("activitytype") String activitytype, @RequestParam("activitytime") Date activitytime,
+                       @RequestParam("acticityspace") String acticityspace, @RequestParam("meetnumber") int meetnumber,
+                       @RequestParam("meetname") String meetname, @RequestParam("acconnent") String acconnent) {
+        return adminService.uploadactivity(activitytype, activitytime, acticityspace, meetnumber, meetname, acconnent);
+    }
+
+    //更新活动信息
+    @RequestMapping(value = "updateactivity")
+    int updateactivity(@RequestParam("activitytype1") String activitytype1, @RequestParam("activitytime1") Date activitytime1,
+                       @RequestParam("acticityspace1") String acticityspace1, @RequestParam("meetnumber1") int meetnumber1,
+                       @RequestParam("meetname1") String meetname1, @RequestParam("acconnent1") String acconnent1,
+                       @RequestParam("peoplename1") String peoplename1) {
+        return adminService.updateactivity(activitytype1, activitytime1, acticityspace1, meetnumber1, meetname1, acconnent1, peoplename1);
     }
 
 }

@@ -1,10 +1,7 @@
 package com.example.demo.service.serviceimpl;
 
 import com.example.demo.dao.AdminDao;
-import com.example.demo.dao.domain.AdminDomain;
-import com.example.demo.dao.domain.InforDomain;
-import com.example.demo.dao.domain.ReturnDomain;
-import com.example.demo.dao.domain.StudentDomain;
+import com.example.demo.dao.domain.*;
 import com.example.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,12 +20,12 @@ public class AdminServiceImpl implements AdminService {
     //删除学校下的某一用户
     @Override
     public int deletstudent(String stuName, String School) {
-        if (stuName==null||School==null)
-            return  returnDomain.getR0();
-        else{
+        if (stuName == null || School == null)
+            return returnDomain.getR0();
+        else {
             StudentDomain studentDomain = new StudentDomain();
             studentDomain = adminService.findByAdminId2(stuName, School);
-            if (studentDomain==null)
+            if (studentDomain == null)
                 return returnDomain.getR2();
             else {
                 adminDao.deletstudent(stuName, School);
@@ -139,5 +136,53 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<StudentDomain> onlyfind(String stuname) {
         return adminDao.onlyfind(stuname);
+    }
+
+    @Override
+    public int sendmessage(String messagename, Date sendtime, String sendname, String messagecontent) {
+        if (messagename == null || sendtime == null || sendname == null || messagecontent == null)
+            return returnDomain.getR0();
+        else {
+            MessageDomain messageDomain = new MessageDomain();
+            messageDomain.setMessagename(messagecontent);
+            messageDomain.setMessagename(messagename);
+            messageDomain.setSendname(sendname);
+            messageDomain.setSendtime(sendtime);
+            adminDao.sendmessage(messageDomain);
+            return returnDomain.getR1();
+        }
+    }
+
+    @Override
+    public int uploadactivity(String activitytype, Date activitytime, String acticityspace, int meetnumber, String meetname, String connent) {
+        if (activitytype == null || activitytime == null || acticityspace == null || meetnumber == 0
+                || meetname == null || connent == null)
+            return returnDomain.getR0();
+        else {
+            ActivityDomain activityDomain = adminDao.findactivity(meetname);
+            if (activityDomain != null)
+                return returnDomain.getR2();
+            else {
+                adminDao.uploadactivity(activitytype, activitytime, acticityspace, meetnumber,meetname, connent);
+                return returnDomain.getR1();
+            }
+        }
+    }
+
+    @Override
+    public int updateactivity(String activitytype, Date activitytime, String acticityspace, int meetnumber, String meetname, String connent, String peoplename) {
+        if (activitytype == null || activitytime == null || acticityspace == null || meetnumber == 0
+                || meetname == null || connent == null||peoplename==null)
+            return returnDomain.getR0();
+        else {
+            ActivityDomain activityDomain = adminDao.findactivity(meetname);
+            if (activityDomain == null)
+                return returnDomain.getR2();
+            else {
+                int p=activityDomain.getId();
+                adminDao.updateactivity(p,activitytype, activitytime, acticityspace, meetnumber,meetname,connent,peoplename);
+                return returnDomain.getR1();
+            }
+        }
     }
 }

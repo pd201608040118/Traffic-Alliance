@@ -62,5 +62,29 @@
             resultType="com.example.demo.dao.domain.StudentDomain">
         SELECT StuId,School,StuName,Tel,Profession,Password from student WHERE StuName=#{stuname}
     </select>
+
+    <insert id="sendmessage">
+        insert into message
+        (MessageName,SendTime,SendName,Messagecontent)
+        values (#{messagename},#{sendtime},#{sendname},#{messagecontent})
+    </insert>
+
+    <select id="findactivity" parameterType="com.example.demo.dao.AdminDao"
+            resultType="com.example.demo.dao.domain.ActivityDomain">
+        SELECT * FROM activity WHERE meetname=#{meetname}
+    </select>
+
+    <insert id="uploadactivity">
+        INSERT INTO activity
+        (activitytype,activitytime,acticityspace,meetnumber,meetname,connent)
+        values (#{activitytype},#{activitytime},#{acticityspace},#{meetnumber},#{meetname},#{connent})
+    </insert>
+
+    <update id="updateactivity" parameterType="com.example.demo.dao.AdminDao">
+        UPDATE activity
+        SET activitytype=#{activitytype},activitytime=#{activitytime},acticityspace=#{acticityspace},
+        meetnumber=#{meetnumber},meetname=#{meetname},connent=#{connent},peoplename=#{peoplename}
+        where id=#{id}
+    </update>
 </mapper>
 

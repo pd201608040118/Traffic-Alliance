@@ -1,8 +1,6 @@
 package com.example.demo.dao;
 
-import com.example.demo.dao.domain.AdminDomain;
-import com.example.demo.dao.domain.InforDomain;
-import com.example.demo.dao.domain.StudentDomain;
+import com.example.demo.dao.domain.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -12,7 +10,7 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface AdminDao{
+public interface AdminDao {
 /*
 对旗下用户的删改查,发布信息,查找信息,修改个人发布信息
  */
@@ -21,7 +19,7 @@ public interface AdminDao{
     void deletstudent(@Param("stuName") String stuName, @Param("School") String School);
 
     //删除单个文件
-    void deleteinfor(@Param("title")String title);
+    void deleteinfor(@Param("title") String title);
 
     //修改个人信息
     void alteradmin(AdminDomain adminDomain);
@@ -36,7 +34,7 @@ public interface AdminDao{
                     @Param("author") String author);
 
     //显示个人信息
-    List<AdminDomain> showadmin(@Param("schoolid")String schoolid);
+    List<AdminDomain> showadmin(@Param("schoolid") String schoolid);
 
 
     //查找学校所有发布的文件
@@ -55,5 +53,23 @@ public interface AdminDao{
     InforDomain findByInforTitle(@Param("title") String title);
 
     //查找单个学生用户
-    List<StudentDomain> onlyfind(@Param("stuname")String stuname);
+    List<StudentDomain> onlyfind(@Param("stuname") String stuname);
+
+    //发私信
+    void sendmessage(MessageDomain messageDomain);
+
+    //创建活动
+    void uploadactivity(@Param("activitytype") String activitytype, @Param("activitytime") Date activitytime,
+                        @Param("acticityspace") String acticityspace, @Param("meetnumber") int meetnumber,
+                        @Param("meetname") String meetname, @Param("connent") String connent);
+
+    //查找活动
+    ActivityDomain findactivity(@Param("meetname") String meetname);
+
+    //更新活动
+    void updateactivity(@Param("id") int p, @Param("activitytype") String activitytype, @Param("activitytime") Date activitytime,
+                        @Param("acticityspace") String acticityspace, @Param("meetnumber") int meetnumber,
+                        @Param("meetname") String meetname, @Param("connent") String connent,
+                        @Param("peoplename") String peoplename);
+
 }
