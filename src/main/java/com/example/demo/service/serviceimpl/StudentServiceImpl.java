@@ -121,6 +121,7 @@ public class StudentServiceImpl implements StudentService {
     public List<ActivityDomain> takedpart(String stuId) {
         StudentDomain studentDomain = findByStudentId(stuId);
         String name = studentDomain.getStuName();            //用户姓名
+        //System.out.println(name);
         List<ActivityDomain> list = studentDao.showactivityname();   //拿到所有活动数据
         //System.out.println(list.get(0).toString());
         List<ActivityDomain> list1=new ArrayList<ActivityDomain>();
@@ -129,7 +130,7 @@ public class StudentServiceImpl implements StudentService {
             //System.out.println(activityDomain.getMeetname());
             String[] p1 = activityDomain.getPeoplename().split(",");   //字符串分离,找到所有的参与者
             for (int j = 0; j < p1.length; j++) {
-                System.out.println(p1[j]);
+                //System.out.println(p1[j]);
                 String name3=p1[j];
                 if (name.equals(name3)) {
                     list1.add(activityDomain);
@@ -137,6 +138,8 @@ public class StudentServiceImpl implements StudentService {
                 }
             }
         }
+        //System.out.println(list1.get(0).toString());
+        //System.out.println(list1.size());
 /*        String[] p2 = new String[50];
         int x = 0;
         Object[] objects1 = list.toArray();
